@@ -37,7 +37,8 @@ namespace JustCoyote
         public static Vector2 BikeOrigion = new Vector2(6f, 18f);
 
         public static Texture2D BackgroundTexture;
-        public static Texture2D BikeTexture;
+        public static Texture2D CoyoteBikeTexture;
+        public static Texture2D RunnerBikeTexture;
         public static Texture2D TailTexture;
         public static Texture2D[] WallTextures;
         public static Color[] PlayerColors = new Color[] 
@@ -98,7 +99,8 @@ namespace JustCoyote
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             BackgroundTexture = Content.Load<Texture2D>("background");
-            BikeTexture = Content.Load<Texture2D>("coyote");
+            CoyoteBikeTexture = Content.Load<Texture2D>("coyote");
+            RunnerBikeTexture = Content.Load<Texture2D>("runner");
             TailTexture = Content.Load<Texture2D>("tail");
 
             WallTextures = new Texture2D[6];
@@ -202,11 +204,11 @@ namespace JustCoyote
 
             Wall.Draw(spriteBatch);
 
-            foreach (Actor actor in Actor.Actors)
-            {
-                actor.Draw(spriteBatch);
-            }
-            // player2.Draw(spriteBatch);
+            //foreach (Actor actor in Actor.Actors)
+            //{
+                player1.Draw(spriteBatch,CoyoteBikeTexture);
+            //}
+                player2.Draw(spriteBatch, RunnerBikeTexture);
 
             spriteBatch.End();
 

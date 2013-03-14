@@ -82,6 +82,15 @@
       <Output>C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\bin\x86\Release\Content\wal_TopRight.xnb</Output>
       <Time>2013-03-14T05:35:53.0294407+02:00</Time>
     </Item>
+    <Item>
+      <Source>runner.png</Source>
+      <Name>runner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\bin\x86\Release\Content\runner.xnb</Output>
+      <Time>2013-03-14T15:22:01.421174+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

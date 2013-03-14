@@ -7,3 +7,4 @@ Content\wall_h.xnb
 Content\wall_TopLeft.xnb
 Content\wall_v.xnb
 Content\wal_TopRight.xnb
+Content\runner.xnb

@@ -120,7 +120,6 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Content Include="Textures\background.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustCoyoteContent\JustCoyoteContent.contentproj">

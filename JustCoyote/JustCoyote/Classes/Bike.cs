@@ -58,7 +58,7 @@ namespace JustCoyote
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch,Texture2D bikeTexture)
         {
             Vector2 drawPosition;
             Vector2 startPosition = this.Position * JustCoyote.GridBlockSize;
@@ -80,7 +80,7 @@ namespace JustCoyote
             float rotation = (float)Math.Atan2(this.direction.Y, this.direction.X); // + MathHelper.Pi / 2
             Color tailColor = JustCoyote.PlayerColors[(int)this.PlayerIndex];
 
-            spriteBatch.Draw(JustCoyote.BikeTexture, drawPosition, null, Color.White, rotation, this.Origin, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(bikeTexture, drawPosition, null, Color.White, rotation, this.Origin, 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(JustCoyote.TailTexture, drawPosition, null, tailColor, rotation, this.Origin, 1f, SpriteEffects.None, 0f);
         }
 

@@ -13,3 +13,4 @@ C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCo
 C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\obj\x86\Release\JustCoyote.exe
 C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\obj\x86\Release\JustCoyote.pdb
+C:\Users\buddi\Documents\Visual Studio 2012\Telerik\JustCoyote\JustCoyote\JustCoyote\bin\x86\Release\Content\runner.xnb

@@ -27,6 +27,6 @@ namespace JustCoyote
 
         public virtual void Update(GameTime gameTime) { }
 
-        public virtual void Draw(SpriteBatch spriteBatch) { }
+        public virtual void Draw(SpriteBatch spriteBatch, Texture2D bikeTexture) { }
     }
 }
