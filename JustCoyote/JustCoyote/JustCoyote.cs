@@ -11,23 +11,18 @@ using Microsoft.Xna.Framework.Media;
 
 namespace JustCoyote
 {
-    //enum GameState   // TODO: For Remove
-    //{
-    //    Plaing,
-    //    Stoped
-    //}
-
     /// <summary>
     /// This is the main type for your game
     /// </summary>
     public class JustCoyote : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        ContentManager content;
         SpriteBatch spriteBatch;
+        SpriteFont spriteFont;
+        Menu menu;
 
-        public const int ScreenWidth = 640;
-        public const int ScreenHeight = 480;
+        public const int ScreenWidth = 990;
+        public const int ScreenHeight = 680;
         public const int GridBlockSize = 8;
         public const int GridWidth = ScreenWidth / GridBlockSize;
         public const int GridHeight = ScreenHeight / GridBlockSize;
@@ -35,7 +30,11 @@ namespace JustCoyote
         public static double BikeMoveInterval = 0.05d;
         public static double BikeStopThreshold = 0.2d;
         public static Vector2 BikeOrigion = new Vector2(6f, 18f);
+        Vector2 origin = new Vector2(0f, 0f);
 
+        public static Texture2D TitleScreen;
+        public static Texture2D GameOverCoyote;
+        public static Texture2D GameOverRunner;
         public static Texture2D BackgroundTexture;
         public static Texture2D CoyoteBikeTexture;
         public static Texture2D RunnerBikeTexture;
@@ -43,27 +42,31 @@ namespace JustCoyote
         public static Texture2D[] WallTextures;
         public static Color[] PlayerColors = new Color[] 
         {
-            new Color(0,255,0),
-            new Color(255,0,0)
+            new Color(51, 51, 153),
+            new Color(255, 51, 0)
         };
 
         private static GameState gameState;
+        private bool isSingle = true;
 
-        private Bike player1;
-        private Bike player2;
+        private Player player1;
+        private Player player2;
+        private static int playerWin;
 
         private void CreateScene()
         {
             Actor.Actors.Clear();
             Wall.Reset();
 
-            player1 = new Bike(PlayerIndex.One, new Vector2(-1f, 10f), Direction.Right);
-            player2 = new Bike(PlayerIndex.Two, new Vector2(GridWidth, GridHeight - 10f), Direction.Left);
+            player1 = new Player(PlayerIndex.One, new Vector2(-1f, 10f), Direction.Right);
+            player2 = new Player(PlayerIndex.Two, new Vector2(GridWidth, GridHeight - 10f), Direction.Left);
         }
 
         public static void CollideWall()
         {
             gameState = GameState.Stoped;
+            playerWin = PlayingState.currentPlayer;
+
         }
 
         public JustCoyote()
@@ -83,8 +86,9 @@ namespace JustCoyote
         protected override void Initialize()
         {
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            menu = new Menu();
             CreateScene();
-            gameState = GameState.Playing;
+            gameState = GameState.TitleScreen;
 
             base.Initialize();
         }
@@ -97,7 +101,12 @@ namespace JustCoyote
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteFont = Content.Load<SpriteFont>("SpriteFont");
 
+
+            TitleScreen = Content.Load<Texture2D>("titlescreen");
+            GameOverCoyote = Content.Load<Texture2D>("gameovercoyote");
+            GameOverRunner = Content.Load<Texture2D>("gameoverrunner");
             BackgroundTexture = Content.Load<Texture2D>("background");
             CoyoteBikeTexture = Content.Load<Texture2D>("coyote");
             RunnerBikeTexture = Content.Load<Texture2D>("runner");
@@ -110,8 +119,6 @@ namespace JustCoyote
             WallTextures[3] = Content.Load<Texture2D>("wal_TopRight");
             WallTextures[4] = Content.Load<Texture2D>("wall_BottomRight");
             WallTextures[5] = Content.Load<Texture2D>("wall_BottomLeft");
-
-
         }
 
         /// <summary>
@@ -134,51 +141,34 @@ namespace JustCoyote
             if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            KeyboardState keyState;
+            KeyboardState keyState = new KeyboardState();
 
             switch (gameState)
             {
-                case GameState.Playing:
+                case GameState.TitleScreen:
+                    int selected = menu.Update(gameTime);
 
-                    for (int i = Actor.Actors.Count - 1; i >= 0; i--)
+                    switch (selected)
                     {
-                        Actor actor = Actor.Actors[i];
-                        actor.Update(gameTime);
-
-                        Bike bike = actor as Bike;
-                        if (bike != null)
-                        {
-                            keyState = Keyboard.GetState(bike.PlayerIndex);
-                            if (keyState.IsKeyDown(Keys.Up) || keyState.IsKeyDown(Keys.W))
-                            {
-                                bike.ChangeDirection(Direction.Up);
-                            }
-
-                            else if (keyState.IsKeyDown(Keys.Down))
-                            {
-                                bike.ChangeDirection(Direction.Down);
-                            }
-
-                            else if (keyState.IsKeyDown(Keys.Left))
-                            {
-                                bike.ChangeDirection(Direction.Left);
-                            }
-
-                            else if (keyState.IsKeyDown(Keys.Right))
-                            {
-                                bike.ChangeDirection(Direction.Right);
-                            }
-
-                            // TODO: accelerate and slow
-                            //double speedRange = BikeStopThreshold - BikeMoveInterval;
-                            //bike.MoveInterval = keyState.IsKeyDown() * speedRange + BikeMoveInterval;
-                        }
+                        case 0:
+                            isSingle = false;
+                            gameState = GameState.Playing;
+                            break;
+                        case 1:
+                            isSingle = true;
+                            gameState = GameState.Playing;
+                            break;
+                        case 2:
+                            this.Exit();
+                            break;
                     }
+                    break;
 
+                case GameState.Playing:
+                    PlayingState.Playing(gameTime, keyState, isSingle);
                     break;
 
                 case GameState.Stoped:
-
                     keyState = Keyboard.GetState(PlayerIndex.One);
                     if (keyState.IsKeyDown(Keys.Space))
                     {
@@ -200,15 +190,34 @@ namespace JustCoyote
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(BackgroundTexture, Vector2.Zero, Color.White);
+            switch (gameState)
+            {
+                case GameState.TitleScreen:
+                    spriteBatch.Draw(TitleScreen, Vector2.Zero, Color.White);
+                    menu.Draw(spriteBatch, spriteFont);
+                    break;
 
-            Wall.Draw(spriteBatch);
+                case GameState.Playing:
+                    spriteBatch.Draw(BackgroundTexture, Vector2.Zero, Color.White);
 
-            //foreach (Actor actor in Actor.Actors)
-            //{
-                player1.Draw(spriteBatch,CoyoteBikeTexture);
-            //}
-                player2.Draw(spriteBatch, RunnerBikeTexture);
+                    Wall.Draw(spriteBatch);
+
+                    player1.Draw(spriteBatch, CoyoteBikeTexture);
+
+                    player2.Draw(spriteBatch, RunnerBikeTexture);
+                    break;
+
+                case GameState.Stoped:
+                    if (playerWin == 0)
+                    {
+                        spriteBatch.Draw(GameOverCoyote, Vector2.Zero, Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(GameOverRunner, Vector2.Zero, Color.White);
+                    }
+                    break;
+            }
 
             spriteBatch.End();
 

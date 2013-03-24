@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace JustCoyote
 {
-    class Actor
+    abstract class Actor
     {
         public static List<Actor> Actors;
 

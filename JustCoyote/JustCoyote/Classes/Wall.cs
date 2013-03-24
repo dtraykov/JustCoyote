@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace JustCoyote
 {
-    static class Wall
+    public static class Wall
     {
         public static WallSegment[,] Segments;
 
@@ -19,13 +19,11 @@ namespace JustCoyote
 
         public static Rectangle GetPointBounds(int x, int y)
         {
-            return new Rectangle
-                (
-                   x * JustCoyote.GridBlockSize,
-                   y * JustCoyote.GridBlockSize,
-                   JustCoyote.GridBlockSize,
-                   JustCoyote.GridBlockSize
-                );
+            return new Rectangle(
+                                 x * JustCoyote.GridBlockSize,
+                                 y * JustCoyote.GridBlockSize,
+                                 JustCoyote.GridBlockSize,
+                                 JustCoyote.GridBlockSize);
         }
 
         public static void Draw(SpriteBatch spriteBatch)
@@ -34,9 +32,9 @@ namespace JustCoyote
             {
                 for (int y = 0; y < JustCoyote.GridHeight; y++)
                 {
-                    if (Segments[x,y].Filled)
+                    if (Segments[x, y].Filled)
                     {
-                        Texture2D wallTexture = JustCoyote.WallTextures[Segments[x,y].TextureIndex];
+                        Texture2D wallTexture = JustCoyote.WallTextures[Segments[x, y].TextureIndex];
                         Color wallColor = JustCoyote.PlayerColors[(int)Segments[x, y].PlayerIndex];
 
                         spriteBatch.Draw(wallTexture, GetPointBounds(x, y), wallColor);

@@ -5,10 +5,8 @@ using System.Text;
 
 namespace JustCoyote
 {
-    enum GameState
+    public interface IMovable
     {
-        TitleScreen,
-        Playing,
-        Stoped
+        void Move();
     }
 }

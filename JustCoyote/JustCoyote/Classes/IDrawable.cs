@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace JustCoyote
 {
-    public struct WallSegment
+    public interface IDrawable
     {
-        public bool Filled;
-        public byte TextureIndex;
-        public PlayerIndex PlayerIndex;
+        void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont);
     }
 }

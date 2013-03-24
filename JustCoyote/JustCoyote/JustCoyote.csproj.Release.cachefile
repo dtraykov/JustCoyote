@@ -1,10 +1,14 @@
-Content\background.xnb
 Content\coyote.xnb
-Content\tail.xnb
+Content\runner.xnb
 Content\wall_BottomLeft.xnb
 Content\wall_BottomRight.xnb
 Content\wall_h.xnb
 Content\wall_TopLeft.xnb
 Content\wall_v.xnb
 Content\wal_TopRight.xnb
-Content\runner.xnb
+Content\tail.xnb
+Content\background.xnb
+Content\titlescreen.xnb
+Content\gameovercoyote.xnb
+Content\gameoverrunner.xnb
+Content\SpriteFont.xnb

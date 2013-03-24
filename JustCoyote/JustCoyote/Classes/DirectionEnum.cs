@@ -5,10 +5,11 @@ using System.Text;
 
 namespace JustCoyote
 {
-    enum GameState
+    enum DirectionEnum
     {
-        TitleScreen,
-        Playing,
-        Stoped
+        Up,
+        Right,
+        Down,
+        Left
     }
 }

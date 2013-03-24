@@ -1,36 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCoyote", "JustCoyote\JustCoyote\JustCoyote.csproj", "{117FBB75-0CD0-4671-92F3-F258643B8D40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCoyote", "JustCoyote\JustCoyote\JustCoyote.csproj", "{7AC3B146-E290-4078-A22C-D7D17EC460AC}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "JustCoyoteContent", "JustCoyote\JustCoyoteContent\JustCoyoteContent.contentproj", "{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCoyoteContent", "JustCoyote\JustCoyoteContent\JustCoyoteContent.contentproj", "{F6314087-1B86-41B6-AA93-030FE95C8606}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://coyoteteam.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = JustCoyote\\JustCoyote\\JustCoyote.csproj
+		SccProjectName1 = JustCoyote/JustCoyote
+		SccLocalPath1 = JustCoyote\\JustCoyote
+		SccProjectUniqueName2 = JustCoyote\\JustCoyoteContent\\JustCoyoteContent.contentproj
+		SccProjectName2 = JustCoyote/JustCoyoteContent
+		SccLocalPath2 = JustCoyote\\JustCoyoteContent
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
-		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Debug|x86.ActiveCfg = Debug|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Debug|x86.Build.0 = Debug|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Release|Any CPU.ActiveCfg = Release|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Release|Mixed Platforms.Build.0 = Release|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Release|x86.ActiveCfg = Release|x86
-		{117FBB75-0CD0-4671-92F3-F258643B8D40}.Release|x86.Build.0 = Release|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Debug|x86.ActiveCfg = Debug|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Release|Any CPU.ActiveCfg = Release|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{B8A2B640-9E7B-404A-8CCA-B872A8F254F0}.Release|x86.ActiveCfg = Release|x86
+		{7AC3B146-E290-4078-A22C-D7D17EC460AC}.Debug|x86.ActiveCfg = Debug|x86
+		{7AC3B146-E290-4078-A22C-D7D17EC460AC}.Debug|x86.Build.0 = Debug|x86
+		{7AC3B146-E290-4078-A22C-D7D17EC460AC}.Release|x86.ActiveCfg = Release|x86
+		{7AC3B146-E290-4078-A22C-D7D17EC460AC}.Release|x86.Build.0 = Release|x86
+		{F6314087-1B86-41B6-AA93-030FE95C8606}.Debug|x86.ActiveCfg = Debug|x86
+		{F6314087-1B86-41B6-AA93-030FE95C8606}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
